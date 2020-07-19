@@ -1,13 +1,19 @@
-URL = {
-    'base': 'https://{proxy}.api.riotgames.com/lol/{url}',
-    'summoner_by_name': 'summoner/v{version}/summoners/by-name/{names}'
-}
-
-API_VERSIONS = {
-    'summoner': '4'
-}
-
 REGIONS = {
-    'europe_nordic_and_east': 'eune1',
-    'europe_west': 'euw1'
+    'br': 'br1',
+    'eune': 'eun1',
+    'euw': 'euw1',
+    'jp': 'jp1',
+    'kr': 'kr',
+    'la1': 'la1',
+    'la2': 'la2',
+    'na': 'na1',
+    'oce': 'oc1',
+    'tr': 'tr',
+    'ru':'ru'
 }
+
+
+
+
+
+
