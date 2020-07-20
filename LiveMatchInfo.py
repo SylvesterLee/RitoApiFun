@@ -32,16 +32,27 @@ class LiveMatchInfo(object):
             print(f"Could not find rune with id: {runeID}")
             return 'NULL'
 
-    def _gameInfo(self):
+    def _summonerspellID_to_summonerName(self, summonerspellID):
+        with open('data/summoner.json', encoding='utf8') as json_file:
+            data = json.load(json_file)
+            for item in data['data'].items():
+                if int(item[1]['key']) == summonerspellID:
+                    return item[1]['name']    ##Maybe this should be 'id'? depends on what to do later
+            print(f"Could not find rune with id: {summonerspellID}")
+            return 'NULL'
+
+
+    def _playerInfo(self):
         participantList = []
         liveGameData = self.lolWatcher.spectator.by_summoner(self.region, self._getEncryptedSummonerName()['id'])
         for participant in liveGameData['participants']:
-            print(participant)
+            #print(participant)
             currentParticipant = {'team':int(participant['teamId']/100),
                                   'summonerName':participant['summonerName'],
                                   'champName':self._champID_to_champName(participant['championId']),
                                   'keyStone':self._runeID_to_runeName(participant['perks']['perkIds'][0]),
-                                  'runes':[self._runeID_to_runeName(participant['perks']['perkIds'][x]) for x in range(1,6)]
+                                  'runes':[self._runeID_to_runeName(participant['perks']['perkIds'][x]) for x in range(1,6)],
+                                  'summonerSpells':[self._summonerspellID_to_summonerName(participant['spell1Id']),self._summonerspellID_to_summonerName(participant['spell2Id'])]
                                   }
             participantList.append(currentParticipant)
 

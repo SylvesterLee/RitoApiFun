@@ -4,13 +4,13 @@ from LiveMatchInfo import LiveMatchInfo
 import json
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'IlIlIlIIIlIIIll'
-API_KEY = 'RGAPI-74a53027-2856-414d-870f-44d944107770'
+SUMMONER_NAME = 'Dawidsonek'
+API_KEY = 'RGAPI-e25dd653-37f8-4941-a4de-2f0555b0f33c'
 
 
 def main():
     matchInfo = LiveMatchInfo(region=REGION, summonerName=SUMMONER_NAME, api_key=API_KEY)
-    print(matchInfo._gameInfo())
+    print(matchInfo._playerInfo())
 
 
 if __name__ == "__main__":
