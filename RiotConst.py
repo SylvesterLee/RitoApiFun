@@ -13,6 +13,13 @@ REGIONS = {
 }
 
 
+SummonerCooldownReduction = {
+    'None': 0.0,
+    'BootsOfLucidity': 0.10,
+    'CosmicInsight': 0.05,
+    'BootsOfLucidityAndCosmicInsight': 0.15
+}
+
 
 
 
