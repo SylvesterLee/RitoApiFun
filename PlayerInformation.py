@@ -2,6 +2,8 @@ import json
 import RiotConst as Consts
 import time
 
+#TODO: The cooldown of Teleport scales from 420-240 seconds depending on champion level. https://leagueoflegends.fandom.com/wiki/Teleport
+
 
 class PlayerInformation(object):
 
@@ -45,8 +47,16 @@ class PlayerInformation(object):
     def _usedSummonerSpell(self, summonerSpell):      #summonerSpell is either 0 or 1, depending on which summonerspell
         self.summonerSpellUsedAt[summonerSpell] = time.time()
 
-    def _getCooldowns(self):
-        return [self._getSummonerSpellCDs()[0] - (time.time() - self.summonerSpellUsedAt[0]), self._getSummonerSpellCDs()[1] - (time.time()-self.summonerSpellUsedAt[1])]
+    def _getCooldowns(self): #returns cooldowns at that point in time and makes sure there is no negative values.
+        summonerSpell0RemainingCD = self._getSummonerSpellCDs()[0] - (time.time() - self.summonerSpellUsedAt[0])
+        summonerSpell1RemainingCD = self._getSummonerSpellCDs()[1] - (time.time() - self.summonerSpellUsedAt[1])
+        if summonerSpell0RemainingCD < 0.0 and summonerSpell1RemainingCD < 0.0:
+            return [0.0, 0.0]
+        elif summonerSpell0RemainingCD < 0.0:
+            return [0.0, summonerSpell1RemainingCD]
+        elif summonerSpell1RemainingCD < 0.0:
+            return [summonerSpell0RemainingCD, 0.0]
+        return [summonerSpell0RemainingCD, summonerSpell1RemainingCD]
 
 
     def print(self):

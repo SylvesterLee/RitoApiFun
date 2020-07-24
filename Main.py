@@ -6,7 +6,7 @@ import time
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'Rip in Peace DFG'
+SUMMONER_NAME = 'Ksâez'
 API_KEY = 'RGAPI-01d1b3c4-013f-4f38-af8b-651d6ced1cfb'
 
 
@@ -15,12 +15,13 @@ def main():
 
     #players = [PlayerInformation(matchInfo._playerInfo()[x]) for x in range(10)]
     player1 = PlayerInformation(matchInfo._playerInfo()[0])
-    player1._boughtBootsOfLucidity()
+    #player1._boughtBootsOfLucidity()
     player1.print()
 
     player1._usedSummonerSpell(0)
+    time.sleep(4)
     player1._usedSummonerSpell(1)
-    time.sleep(161)
+    time.sleep(2)
     print(player1._getCooldowns())
 
 
