@@ -8,8 +8,8 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'Kxng'
-API_KEY = 'RGAPI-01d1b3c4-013f-4f38-af8b-651d6ced1cfb'
+SUMMONER_NAME = 'OG KAROLBIELECKI'
+API_KEY = 'RGAPI-185d249d-1680-4f5b-9fd7-74b33b8013eb'
 
 
 def main():
@@ -18,14 +18,16 @@ def main():
     players = [PlayerInformation(matchInfo._playerInfo()[x]) for x in range(10)]
     player1 = players[1]
     #player1._boughtBootsOfLucidity()
+    player1._boughtBootsOfLucidity()
     player1.print()
 
+    '''
     player1._usedSummonerSpell(0)
     time.sleep(4)
     player1._usedSummonerSpell(1)
     time.sleep(2)
     print(player1._getCooldowns())
-
+    '''
     test = GUI(players)
     '''
     win = Tk()
