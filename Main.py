@@ -8,8 +8,8 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'OG KAROLBIELECKI'
-API_KEY = 'RGAPI-185d249d-1680-4f5b-9fd7-74b33b8013eb'
+SUMMONER_NAME = 'LeChase'
+API_KEY = 'RGAPI-5a48f5fd-f241-4512-bab2-80e09f390bc1'
 
 
 def main():
@@ -28,6 +28,9 @@ def main():
     time.sleep(2)
     print(player1._getCooldowns())
     '''
+
+
+
     test = GUI(players)
     '''
     win = Tk()
