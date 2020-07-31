@@ -8,7 +8,7 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'Sâtorius'
+SUMMONER_NAME = 'White Wοlf'
 API_KEY = 'RGAPI-5a48f5fd-f241-4512-bab2-80e09f390bc1'
 
 
