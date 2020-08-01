@@ -17,8 +17,9 @@ class PlayerInformation(object):
         self.summonerSpellsBaseCD = [self._getBaseSummonerCD(self.summonerSpells[x]) for x in range(2)]
         self.hasCosmicInsight = 'CosmicInsight' in self.runes
         self.hasBootsOfLucidity = False
+        self.level = 0
 
-        self.summonerSpellUsedAt = [time.time()-time.time(), time.time()-time.time()]
+        self.summonerSpellUsedAt = [0,0]
 
     def _getBaseSummonerCD(self, summonerSpell):
         with open('data/summoner.json', encoding='utf8') as json_file:

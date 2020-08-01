@@ -8,30 +8,27 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'White Wοlf'
-API_KEY = 'RGAPI-5a48f5fd-f241-4512-bab2-80e09f390bc1'
+SUMMONER_NAME = 'RafaL0L'
+API_KEY = 'RGAPI-d23112ae-95e1-44b1-909f-1880b48508dd'
 
 
 def main():
     matchInfo = LiveMatchInfo(region=REGION, summonerName=SUMMONER_NAME, api_key=API_KEY)
 
     players = [PlayerInformation(matchInfo._playerInfo()[x]) for x in range(10)]
-    player1 = players[1]
+    #player1 = players[1]
     #player1._boughtBootsOfLucidity()
-    player1._boughtBootsOfLucidity()
-    player1.print()
+    #player1._boughtBootsOfLucidity()
+    #player1.print()
+    #player1._usedSummonerSpell(0)
 
-    '''
-    player1._usedSummonerSpell(0)
-    time.sleep(4)
-    player1._usedSummonerSpell(1)
-    time.sleep(2)
-    print(player1._getCooldowns())
-    '''
+
 
 
 
     test = GUI(players)
+
+
     '''
     win = Tk()
     win.title('this is a test window')
@@ -48,8 +45,6 @@ def main():
 
     win.mainloop()
     '''
-    #for player in players:
-    #    player.print()
 
 
 
