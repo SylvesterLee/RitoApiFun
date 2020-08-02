@@ -8,8 +8,8 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'RafaL0L'
-API_KEY = 'RGAPI-d23112ae-95e1-44b1-909f-1880b48508dd'
+SUMMONER_NAME = 'the vicugna paco'
+API_KEY = ''
 
 
 def main():

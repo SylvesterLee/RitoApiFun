@@ -9,8 +9,7 @@ class GUI(object):
         self.team1Members = 0
         self.team2Members = 0
         self.playerCDLabels = []
-
-        self.testint = 0
+        self.playerLevelEntries = []
 
         self.root = Tk()
         self.root.title("Sylle's Super Awesome Cooldown Counter")
@@ -28,19 +27,21 @@ class GUI(object):
         for player in self.playersInfo:
             self.createPlayerFrame(player)
 
-        #self.root.after(10000, self._updateAllPlayers)
+        #self.root.after(1000, self._updateAllPlayers)
+
         self._updateAllPlayers()
         self.root.mainloop()
 
 
     def _updateAllPlayers(self):
-        self.testint += 1
-        print(self.testint)
+        temp = 0
         for idx, CDs in enumerate(self.playerCDLabels):
+            self.playersInfo[idx].level = self.playerLevelEntries[idx].get()
+
             CDs[0].configure(text = int(self.playersInfo[idx]._getCooldowns()[0]))
             CDs[1].configure(text = int(self.playersInfo[idx]._getCooldowns()[1]))
 
-        self.root.after(1000, self._updateAllPlayers)
+        self.root.after(500, self._updateAllPlayers)
 
     def createPlayerFrame(self, player):
         PADDING_BETWEEN_PLAYERS = 40
@@ -60,9 +61,18 @@ class GUI(object):
         Label(frame, text = player.summonerSpells[0] + ' CD:', font = cdFont).grid(row = teamMembers * 4 + 2, column = 0, sticky="W")
         Label(frame, text = player.summonerSpells[1] + ' CD:', font = cdFont).grid(row = teamMembers * 4 + 3, column = 0, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
 
+
+        #self.playerLevelEntries.append(entryLevel)
+        levelLabel = Label(frame, text = 'Level:')
+        entryLevel = IntVar()
+        entryLevel.set(1)
+        self.playerLevelEntries.append(entryLevel)
+        levelEntry = Entry(frame, text = entryLevel, width = 4)
+
         if 'Teleport' in player.summonerSpells:
-            Label(frame, text = 'Level:').grid(row = teamMembers * 4, column = 1, sticky="W")
-            Entry(frame, width = 4).grid(row = teamMembers * 4, column = 2, sticky="W")
+            levelLabel.grid(row = teamMembers * 4, column = 1, sticky="W")
+            levelEntry.grid(row = teamMembers * 4, column = 2, sticky="W")
+
 
         CDLabel1 = Label(frame, text = int(player._getCooldowns()[0]), font = cdFont)
         CDLabel1.grid(row = teamMembers * 4 + 2, column = 1, sticky="W")
@@ -70,7 +80,11 @@ class GUI(object):
         CDlabel2.grid(row = teamMembers * 4 + 3, column = 1, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
         self.playerCDLabels.append([CDLabel1, CDlabel2])
 
-        Checkbutton(frame, text = 'Boots of Lucidity', variable = BooleanVar(value = True), onvalue = True, offvalue = False).grid(row = teamMembers * 4 + 1, column = 2, sticky="W")
-        Button(frame, text = 'Used ' + player.summonerSpells[0], command = player._usedSummonerSpell(0)).grid(row = teamMembers * 4 + 2, column = 2, sticky="W")
-        Button(frame, text = 'Used ' + player.summonerSpells[1], command = player._usedSummonerSpell(1)).grid(row = teamMembers * 4 + 3, column = 2, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
+
+        hasBootsOfLucidity = BooleanVar(False)
+        Checkbutton(frame, text = 'Boots of Lucidity', variable = hasBootsOfLucidity, onvalue = True, offvalue = False, command = lambda: player._boughtBootsOfLucidity(hasBootsOfLucidity)).grid(row = teamMembers * 4 + 1, column = 2, sticky="W")
+
+        Button(frame, text = 'Used ' + player.summonerSpells[0], command = player._usedSummonerSpell1).grid(row = teamMembers * 4 + 2, column = 2, sticky="W")
+        Button(frame, text = 'Used ' + player.summonerSpells[1], command = player._usedSummonerSpell2).grid(row = teamMembers * 4 + 3, column = 2, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
+
 

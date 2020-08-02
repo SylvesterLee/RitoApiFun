@@ -2,7 +2,6 @@ import json
 import RiotConst as Consts
 import time
 
-#TODO: The cooldown of Teleport scales from 420-240 seconds depending on champion level. https://leagueoflegends.fandom.com/wiki/Teleport
 
 
 class PlayerInformation(object):
@@ -14,14 +13,17 @@ class PlayerInformation(object):
         self.keyStone = LiveMatchPlayerInfo['keyStone']
         self.runes = LiveMatchPlayerInfo['runes']
         self.summonerSpells = LiveMatchPlayerInfo['summonerSpells']
+        self.level = 1
         self.summonerSpellsBaseCD = [self._getBaseSummonerCD(self.summonerSpells[x]) for x in range(2)]
         self.hasCosmicInsight = 'CosmicInsight' in self.runes
         self.hasBootsOfLucidity = False
-        self.level = 0
 
-        self.summonerSpellUsedAt = [0,0]
+
+        self.summonerSpellUsedAt = [0, 0]
 
     def _getBaseSummonerCD(self, summonerSpell):
+        if summonerSpell == 'Teleport':
+            return self._getBaseSummonerCDTeleport()
         with open('data/summoner.json', encoding='utf8') as json_file:
             data = json.load(json_file)
             for item in data['data'].items():
@@ -30,23 +32,29 @@ class PlayerInformation(object):
             print(f"Could not find rune with name: {summonerSpell}")
             return 'NULL'
 
-    def _boughtBootsOfLucidity(self):
-        self.hasBootsOfLucidity = True
-    def _soldBootsOfLucidity(self):
-        self.hasBootsOfLucidity = False
+    def _boughtBootsOfLucidity(self, answer):
+        self.hasBootsOfLucidity = answer
 
     def _getSummonerSpellCDs(self):
-        if self.hasCosmicInsight and self.hasBootsOfLucidity:
-            return [i * (1 - Consts.SummonerCooldownReduction['BootsOfLucidityAndCosmicInsight']) for i in self.summonerSpellsBaseCD]
-        elif self.hasCosmicInsight:
-            return [i * (1 - Consts.SummonerCooldownReduction['CosmicInsight']) for i in self.summonerSpellsBaseCD]
-        elif self.hasBootsOfLucidity:
-            return [i * (1 - Consts.SummonerCooldownReduction['BootsOfLucidity']) for i in self.summonerSpellsBaseCD]
-        else:
-            return self.summonerSpellsBaseCD
+        summonerSpellCDs = [0, 0]
+        for idx, baseCD in enumerate(self.summonerSpellsBaseCD):
+            if self.summonerSpells[idx] == 'Teleport':      #Need to calculate a new cd if summonerspell is tp, as it is based on level
+                baseCD = self._getBaseSummonerCDTeleport()
+            if self.hasCosmicInsight and self.hasBootsOfLucidity:
+                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['BootsOfLucidityAndCosmicInsight'])
+            elif self.hasCosmicInsight:
+                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['CosmicInsight'])
+            elif self.hasBootsOfLucidity:
+                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['BootsOfLucidity'])
+            else:
+                summonerSpellCDs[idx] = baseCD
+        return summonerSpellCDs
 
-    def _usedSummonerSpell(self, summonerSpell):      #summonerSpell is either 0 or 1, depending on which summonerspell
-        self.summonerSpellUsedAt[summonerSpell] = time.time()
+    def _usedSummonerSpell1(self):
+        self.summonerSpellUsedAt[0] = time.time()
+
+    def _usedSummonerSpell2(self):
+        self.summonerSpellUsedAt[1] = time.time()
 
     def _getCooldowns(self): #returns cooldowns at that point in time and makes sure there is no negative values.
         summonerSpell0RemainingCD = self._getSummonerSpellCDs()[0] - (time.time() - self.summonerSpellUsedAt[0])
@@ -59,6 +67,12 @@ class PlayerInformation(object):
             return [summonerSpell0RemainingCD, 0.0]
         return [summonerSpell0RemainingCD, summonerSpell1RemainingCD]
 
+    def _getBaseSummonerCDTeleport(self):
+        if self.level > 18:
+            return Consts.TeleportCooldownPerLevel[18]
+        if self.level < 1:
+            return Consts.TeleportCooldownPerLevel[1]
+        return Consts.TeleportCooldownPerLevel[self.level]
 
     def print(self):
         print(f"""Team: {self.team}
