@@ -1,10 +1,16 @@
 from tkinter import *
-import tkinter.ttk
-import time
 
 
 class GUI(object):
+    """
+    Used for creating and updating the GUI
+    """
     def __init__(self, playersInfo):
+        """
+        Creates the start layout of the GUI
+
+        :param PlayerInformation list playersInfo: list of the relevant player information
+        """
         self.playersInfo = playersInfo
         self.team1Members = 0
         self.team2Members = 0
@@ -27,14 +33,16 @@ class GUI(object):
         for player in self.playersInfo:
             self.createPlayerFrame(player)
 
-        #self.root.after(1000, self._updateAllPlayers)
-
         self._updateAllPlayers()
         self.root.mainloop()
 
 
     def _updateAllPlayers(self):
-        temp = 0
+        """
+        Used to update the cooldown labels and levels of each player
+
+        :return: void
+        """
         for idx, CDs in enumerate(self.playerCDLabels):
             self.playersInfo[idx].level = self.playerLevelEntries[idx].get()
 
@@ -44,6 +52,12 @@ class GUI(object):
         self.root.after(500, self._updateAllPlayers)
 
     def createPlayerFrame(self, player):
+        """
+        Used to display the relevant information about a player
+
+        :param PlayerInformation player:
+        :return: void
+        """
         PADDING_BETWEEN_PLAYERS = 40
         cdFont = 'Helvetica 13 bold'
 
