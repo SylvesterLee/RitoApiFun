@@ -44,7 +44,10 @@ class GUI(object):
         :return: void
         """
         for idx, CDs in enumerate(self.playerCDLabels):
-            self.playersInfo[idx].level = self.playerLevelEntries[idx].get()
+            updatedLvl = self.playerLevelEntries[idx].get()
+            if updatedLvl == "":
+                updatedLvl = 1
+            self.playersInfo[idx].level = int(updatedLvl)
 
             CDs[0].configure(text = int(self.playersInfo[idx]._getCooldowns()[0]))
             CDs[1].configure(text = int(self.playersInfo[idx]._getCooldowns()[1]))
@@ -76,9 +79,8 @@ class GUI(object):
         Label(frame, text = player.summonerSpells[1] + ' CD:', font = cdFont).grid(row = teamMembers * 4 + 3, column = 0, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
 
 
-        #self.playerLevelEntries.append(entryLevel)
         levelLabel = Label(frame, text = 'Level:')
-        entryLevel = IntVar()
+        entryLevel = StringVar()
         entryLevel.set(1)
         self.playerLevelEntries.append(entryLevel)
         levelEntry = Entry(frame, text = entryLevel, width = 4)

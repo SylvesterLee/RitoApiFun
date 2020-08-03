@@ -5,8 +5,8 @@ from gui import GUI
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'Kakudos'
-API_KEY = ''
+SUMMONER_NAME = 'MRS JaVaáa'
+API_KEY = 'RGAPI-d2a17467-eb44-4d02-bbe6-b2e0ee0ac5a4'
 
 
 def main():
