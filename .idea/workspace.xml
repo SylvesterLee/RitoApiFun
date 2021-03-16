@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="882e14b8-10b3-4ead-8413-55b399ed998d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/champion.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/champion.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/runesReforged.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/runesReforged.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/summoner.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/summoner.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoTyper.py" beforeDir="false" afterPath="$PROJECT_DIR$/AutoTyper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RiotConst.py" beforeDir="false" afterPath="$PROJECT_DIR$/RiotConst.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,13 +16,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RiotConst.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="48" column="21" lean-forward="true" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+            <state relative-caret-position="488">
+              <caret line="212" column="1" lean-forward="true" selection-start-line="212" selection-start-column="1" selection-end-line="212" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/champion.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret column="131518" lean-forward="true" selection-start-column="131518" selection-end-column="131525" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
@@ -48,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AutoTyper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="128" lean-forward="true" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+            <state relative-caret-position="471">
+              <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -72,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LiveMatchInfo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
+            <state relative-caret-position="1168">
               <caret line="91" column="20" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
@@ -92,9 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>8112</find>
-      <find>cooldown</find>
-      <find>summoner</find>
       <find>4</find>
       <find>monkey</find>
       <find>telepo</find>
@@ -106,6 +110,25 @@
       <find>main</find>
       <find>updateAll</find>
       <find>createpl</find>
+      <find>aurelion</find>
+      <find>chogath</find>
+      <find>drmundo</find>
+      <find>heimerd</find>
+      <find>jarvan</find>
+      <find>kha</find>
+      <find>kogm</find>
+      <find>champName</find>
+      <find>lebla</find>
+      <find>lees</find>
+      <find>masteryi</find>
+      <find>miss</find>
+      <find>nunu</find>
+      <find>reksa</find>
+      <find>tahm</find>
+      <find>twisted</find>
+      <find>velko</find>
+      <find>wukon</find>
+      <find>xinzh</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -122,9 +145,9 @@
         <option value="$PROJECT_DIR$/LiveMatchInfo.py" />
         <option value="$PROJECT_DIR$/PlayerInformation.py" />
         <option value="$PROJECT_DIR$/gui.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/RiotConst.py" />
         <option value="$PROJECT_DIR$/AutoTyper.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
       </list>
     </option>
   </component>
@@ -274,11 +297,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32912722" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.32912722" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32912722" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="4" />
@@ -326,24 +350,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RiotAPI.py" />
-    <entry file="file://$PROJECT_DIR$/data/champion.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret column="67947" selection-start-column="67947" selection-end-column="67947" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/summoner.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="15236" selection-start-column="15236" selection-end-column="15236" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PlayerInformation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -357,16 +367,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlayerInformation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/champion.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret column="131518" lean-forward="true" selection-start-column="131518" selection-end-column="131525" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RiotConst.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="48" column="21" lean-forward="true" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        <state relative-caret-position="488">
+          <caret line="212" column="1" lean-forward="true" selection-start-line="212" selection-start-column="1" selection-end-line="212" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LiveMatchInfo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
+        <state relative-caret-position="1168">
           <caret line="91" column="20" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
@@ -376,20 +410,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AutoTyper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="128" lean-forward="true" selection-start-line="37" selection-start-column="128" selection-end-line="37" selection-end-column="128" />
+        <state relative-caret-position="471">
+          <caret line="36" column="29" lean-forward="true" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
