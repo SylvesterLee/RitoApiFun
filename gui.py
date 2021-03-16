@@ -1,4 +1,5 @@
 from tkinter import *
+from AutoTyper import AutoTyper
 
 
 class GUI(object):
@@ -33,6 +34,7 @@ class GUI(object):
         for player in self.playersInfo:
             self.createPlayerFrame(player)
 
+        self.autoTyper = AutoTyper()
         self._updateAllPlayers()
         self.root.mainloop()
 
@@ -43,6 +45,7 @@ class GUI(object):
 
         :return: void
         """
+
         for idx, CDs in enumerate(self.playerCDLabels):
             updatedLvl = self.playerLevelEntries[idx].get()
             if updatedLvl == "":
@@ -52,6 +55,7 @@ class GUI(object):
             CDs[0].configure(text = int(self.playersInfo[idx]._getCooldowns()[0]))
             CDs[1].configure(text = int(self.playersInfo[idx]._getCooldowns()[1]))
 
+        self.autoTyper.update_prettyPrintString(self.playersInfo)
         self.root.after(500, self._updateAllPlayers)
 
     def createPlayerFrame(self, player):

@@ -2,11 +2,12 @@ import RiotConst as Consts
 from LiveMatchInfo import LiveMatchInfo
 from PlayerInformation import PlayerInformation
 from gui import GUI
+import AutoTyper
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 'MRS JaVaáa'
-API_KEY = 'RGAPI-d2a17467-eb44-4d02-bbe6-b2e0ee0ac5a4'
+SUMMONER_NAME = 's1 night'
+API_KEY = 'RGAPI-7f45cd1d-a6a3-4945-b4a4-dbe85a32700d'
 
 
 def main():
@@ -19,7 +20,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-

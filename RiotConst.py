@@ -42,6 +42,18 @@ TeleportCooldownPerLevel = {
     18: 240
 }
 
-
+SummonerShortNames = {
+    'Heal': 'heal',
+    'Ghost': 'gst',
+    'Barrier': 'barr',
+    'Exhaust': 'exh',
+    'Mark': 'mark',
+    'Clarity': 'clrty',
+    'Flash': 'f',
+    'Teleport': 'tp',
+    'Smite': 'smite',
+    'Cleanse': 'clnse',
+    'Ignite': 'ign'
+}
 
 
