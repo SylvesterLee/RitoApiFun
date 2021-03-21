@@ -30,11 +30,11 @@ class AutoTyper(object):
         for idx, player in enumerate(self.playersInfo):
             summSpells = player.summonerSpells
             CDs = player._getCooldowns()
-            if CDs[0] > 10 and CDs[1] > 10:
+            if CDs[0] > 5 and CDs[1] > 5:
                 self.prettyPrintString += f"{Consts.ChampionShortNames[player.champName]}: {Consts.SummonerShortNames[summSpells[0]]} in {round(CDs[0])}, {Consts.SummonerShortNames[summSpells[1]]} in {round(CDs[1])}. "
-            elif CDs[0] > 10:
+            elif CDs[0] > 5:
                 self.prettyPrintString += f"{Consts.ChampionShortNames[player.champName]}: {Consts.SummonerShortNames[summSpells[0]]} in {round(CDs[0])}. "
-            elif CDs[1] > 10:
+            elif CDs[1] > 5:
                 self.prettyPrintString += f"{Consts.ChampionShortNames[player.champName]}: {Consts.SummonerShortNames[summSpells[1]]} in {round(CDs[1])}. "
 
         self.keyboardCtrl.type(f"{self.prettyPrintString}")

@@ -6,8 +6,8 @@ import AutoTyper
 
 
 REGION = Consts.REGIONS['euw']
-SUMMONER_NAME = 's1 night'
-API_KEY = 'RGAPI-7f45cd1d-a6a3-4945-b4a4-dbe85a32700d'
+SUMMONER_NAME = 'Kakudos'
+API_KEY = 'RGAPI-6f7893a9-527e-4920-8af8-2ae697f9b11f'
 
 
 def main():

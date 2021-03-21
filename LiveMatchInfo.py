@@ -99,7 +99,7 @@ class LiveMatchInfo(object):
                                   'champName':self._champID_to_champName(participant['championId']),
                                   'keyStone':self._runeID_to_runeName(participant['perks']['perkIds'][0]),
                                   'runes':[self._runeID_to_runeName(participant['perks']['perkIds'][x]) for x in range(1,6)],
-                                  'summonerSpells':[self._summonerspellID_to_summonerName(participant['spell1Id']),self._summonerspellID_to_summonerName(participant['spell2Id'])]
+                                  'summonerSpells':[self._summonerspellID_to_summonerName(participant['spell1Id']), self._summonerspellID_to_summonerName(participant['spell2Id'])]
                                   }
             participantList.append(currentParticipant)
 
