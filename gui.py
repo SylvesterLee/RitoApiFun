@@ -63,7 +63,6 @@ class GUI(object):
             CDs[0].configure(text = int(self.playersInfo[idx]._getCooldowns()[0]))
             CDs[1].configure(text = int(self.playersInfo[idx]._getCooldowns()[1]))
 
-        print(self.ingameTimerTotalSeconds)
         self.ingameTimerTotalSeconds += 0.5
         minutes, seconds = self.secondsToMinutes(self.ingameTimerTotalSeconds)
         self.ingameTimerLabel.configure(text = f"{minutes:02}:{seconds:02}")
