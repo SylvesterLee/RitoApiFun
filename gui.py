@@ -31,7 +31,7 @@ class GUI(object):
         self.team2Frame = Frame(self.root)
         self.team2Frame.grid(row = 1, column = 2, padx = 50)
 
-        self.team2Lbl = Label(self.root, text ='Team 2', font = "50").grid(row = 0, column = 3, pady = (0, 20))
+        self.team2Lbl = Label(self.root, text ='Team 2', font = "50").grid(row = 0, column = 2, pady = (0, 20))
 
         for player in self.playersInfo:
             self.createPlayerFrame(player)

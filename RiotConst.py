@@ -15,31 +15,31 @@ REGIONS = {
 
 SummonerCooldownReduction = {
     'None': 0.0,
-    'BootsOfLucidity': 0.10,
-    'CosmicInsight': 0.05,
-    'BootsOfLucidityAndCosmicInsight': 0.15
+    'BootsOfLucidity': 12,
+    'CosmicInsight': 18,
+    'BootsOfLucidityAndCosmicInsight': 30
 }
 
 
 TeleportCooldownPerLevel = {
     1: 420,
-    2: 409.41,
-    3: 398.82,
-    4: 388.24,
-    5: 377.65,
-    6: 367.06,
-    7: 356.47,
-    8: 345.88,
-    9: 335.29,
-    10: 324.71,
-    11: 314.12,
-    12: 303.53,
-    13: 292.94,
-    14: 282.35,
-    15: 271.76,
-    16: 261.12,
-    17: 250.59,
-    18: 240
+    2: 407.65,
+    3: 395.29,
+    4: 382.94,
+    5: 370.59,
+    6: 358.24,
+    7: 345.88,
+    8: 333.53,
+    9: 321.18,
+    10: 308.82,
+    11: 296.47,
+    12: 284.12,
+    13: 271.76,
+    14: 259.41,
+    15: 247.06,
+    16: 234.71,
+    17: 222.35,
+    18: 210
 }
 
 SummonerShortNames = {

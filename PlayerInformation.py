@@ -70,11 +70,11 @@ class PlayerInformation(object):
             if self.summonerSpells[idx] == 'Teleport':      #Need to calculate a new cd if summonerspell is tp, as it is based on level
                 baseCD = self._getBaseSummonerCDTeleport()
             if self.hasCosmicInsight and self.hasBootsOfLucidity:
-                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['BootsOfLucidityAndCosmicInsight'])
+                summonerSpellCDs[idx] = baseCD * (100/(100 + Consts.SummonerCooldownReduction['BootsOfLucidityAndCosmicInsight']))
             elif self.hasCosmicInsight:
-                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['CosmicInsight'])
+                summonerSpellCDs[idx] = baseCD * (100/(100 + Consts.SummonerCooldownReduction['CosmicInsight']))
             elif self.hasBootsOfLucidity:
-                summonerSpellCDs[idx] = baseCD * (1 - Consts.SummonerCooldownReduction['BootsOfLucidity'])
+                summonerSpellCDs[idx] = baseCD * (100/(100 + Consts.SummonerCooldownReduction['BootsOfLucidity']))
             else:
                 summonerSpellCDs[idx] = baseCD
         return summonerSpellCDs
