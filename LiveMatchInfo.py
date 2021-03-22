@@ -78,7 +78,7 @@ class LiveMatchInfo(object):
             for item in data['data'].items():
                 if int(item[1]['key']) == summonerspellID:
                     return item[1]['name']    ##Maybe this should be 'id'? depends on what to do later
-            print(f"Could not find rune with id: {summonerspellID}")
+            print(f"Could not find summoner spell with id: {summonerspellID}")
             return 'NULL'
 
 
@@ -104,3 +104,5 @@ class LiveMatchInfo(object):
             participantList.append(currentParticipant)
 
         return participantList
+
+

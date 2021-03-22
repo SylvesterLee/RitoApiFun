@@ -17,9 +17,11 @@ class GUI(object):
         self.team2Members = 0
         self.playerCDLabels = []
         self.playerLevelEntries = []
+        self.ingameTimerTotalSeconds = 0
 
         self.root = Tk()
         self.root.title("Sylle's Super Awesome Cooldown Counter")
+
 
         self.team1Frame = Frame(self.root)
         self.team1Frame.grid(row = 1, column = 0, padx = 50)
@@ -27,12 +29,18 @@ class GUI(object):
         self.team1Lbl = Label(self.root, text ='Team 1', font = "50").grid(row = 0, column = 0, pady = (0, 20))
 
         self.team2Frame = Frame(self.root)
-        self.team2Frame.grid(row = 1, column = 1, padx = 50)
+        self.team2Frame.grid(row = 1, column = 2, padx = 50)
 
-        self.team2Lbl = Label(self.root, text ='Team 2', font = "50").grid(row = 0, column = 1, pady = (0, 20))
+        self.team2Lbl = Label(self.root, text ='Team 2', font = "50").grid(row = 0, column = 3, pady = (0, 20))
 
         for player in self.playersInfo:
             self.createPlayerFrame(player)
+
+
+        self.ingameTimerFrame = Frame(self.root)
+        self.ingameTimerFrame.grid(row = 0, column = 1)
+
+        self.createTimerFrame()
 
         self.autoTyper = AutoTyper()
         self._updateAllPlayers()
@@ -55,8 +63,46 @@ class GUI(object):
             CDs[0].configure(text = int(self.playersInfo[idx]._getCooldowns()[0]))
             CDs[1].configure(text = int(self.playersInfo[idx]._getCooldowns()[1]))
 
-        self.autoTyper.update_prettyPrintString(self.playersInfo)
+        print(self.ingameTimerTotalSeconds)
+        self.ingameTimerTotalSeconds += 0.5
+        minutes, seconds = self.secondsToMinutes(self.ingameTimerTotalSeconds)
+        self.ingameTimerLabel.configure(text = f"{minutes:02}:{seconds:02}")
+
+        self.autoTyper.update_prettyPrintString(self.playersInfo, self.ingameTimerTotalSeconds)
         self.root.after(500, self._updateAllPlayers)
+
+
+    def createTimerFrame(self):
+        """
+        used to format and display the ingame timer and to change it manually.
+        :return: void
+        """
+        self.ingameTimerLabelLabel = Label(self.ingameTimerFrame, text = 'Gametime', font = "50")
+        self.ingameTimerLabelLabel.grid(row=0, column = 0)
+
+        minutes, seconds = self.secondsToMinutes(self.ingameTimerTotalSeconds)
+        self.ingameTimerLabel = Label(self.ingameTimerFrame,text = f"{minutes:02}:{seconds:02}", font = 'Helvetica 13')
+        self.ingameTimerLabel.grid(row=0, column = 1)
+
+        self.setTimerFrame = Frame(self.ingameTimerFrame)
+        self.setTimerFrame.grid(row = 1, column = 1)
+
+        self.setTimerMinute = Entry(self.setTimerFrame, width = 4)
+        self.setTimerMinute.grid(row = 0, column = 0)
+        self.timerColon = Label(self.setTimerFrame, text = ":")
+        self.timerColon.grid(row = 0, column = 1)
+        self.setTimerSecond = Entry(self.setTimerFrame, width = 4)
+        self.setTimerSecond.grid(row = 0, column = 2)
+
+        self.ingameSetTimerButton = Button(self.ingameTimerFrame, text = "Set time",
+                                           command = lambda : self.setIngameTimerTotalSeconds(self.minutesToSeconds(self.setTimerMinute.get(), self.setTimerSecond.get())))
+        self.ingameSetTimerButton.grid(row = 1, column = 0)
+
+    def setIngameTimerTotalSeconds(self, newTotalSeconds):
+        try:
+            self.ingameTimerTotalSeconds = int(newTotalSeconds)
+        except:
+            self.ingameTimerTotalSeconds = 0
 
     def createPlayerFrame(self, player):
         """
@@ -100,11 +146,29 @@ class GUI(object):
         CDlabel2.grid(row = teamMembers * 4 + 3, column = 1, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
         self.playerCDLabels.append([CDLabel1, CDlabel2])
 
-
         hasBootsOfLucidity = BooleanVar(False)
         Checkbutton(frame, text = 'Boots of Lucidity', variable = hasBootsOfLucidity, onvalue = True, offvalue = False, command = lambda: player._boughtBootsOfLucidity(hasBootsOfLucidity)).grid(row = teamMembers * 4 + 1, column = 2, sticky="W")
 
         Button(frame, text = 'Used ' + player.summonerSpells[0], command = player._usedSummonerSpell1).grid(row = teamMembers * 4 + 2, column = 2, sticky="W")
         Button(frame, text = 'Used ' + player.summonerSpells[1], command = player._usedSummonerSpell2).grid(row = teamMembers * 4 + 3, column = 2, sticky="W", pady = (0, PADDING_BETWEEN_PLAYERS))
 
+    def minutesToSeconds(self, minutes, seconds):
+        """
 
+        :param minutes:
+        :param seconds:
+        :return:
+        """
+        try:
+            return int(minutes) * 60 + int(seconds)
+        except:
+            print("invalid values in \"set time\"")
+        return 0
+
+    def secondsToMinutes(self, secondsTotal):
+        """
+
+        :param secondsTotal:
+        :return:
+        """
+        return int(secondsTotal / 60), int(secondsTotal % 60)
